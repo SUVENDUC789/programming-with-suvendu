@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block container %}
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/static/6.jpg" class="d-block w-100" alt="Some thing went to wrong" height="420px">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/static/3.jpg" class="d-block w-100" alt="Some thing went to wrong" height="420px">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/static/5.jpg" class="d-block w-100" alt="Some thing went to wrong" height="420px">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+
+
+      {% comment %} <div>
+      <h2 class="text-center text-3xl font-bold leading-tight">Welcome to my site</h2>
+        <img class="h-40 my-5 mx-auto py-2" src="https://scontent.fccu31-1.fna.fbcdn.net/v/t39.30808-6/246785639_206881338216501_5896698526592944398_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=H4BW6DOzyPIAX9NuUnb&_nc_ht=scontent.fccu31-1.fna&oh=00_AT_pHbmo5K4joMdsTG6NFdLliQ9LLyjLzF4rHvD081EcIw&oe=63192A76">
+      </div> {% endcomment %}
+      <section class="text-center my-5">
+        <div class="container">
+          <h2> I am
+            <span class="text-type" data-wait="3000"
+                data-words='["SUVENDU CHOWDHURY.","a passionate coder","also a student.","an enthusiastic techie."]'></span>
+          </h2>
+            <p class="lead text-muted">I'm Suvendu Chowdhury and I'm interested in programming and Web/App-Developed
+              Currently I'm learning and practicing java , Python and Digital image processing,
+            <p>
+                <a href="/about/" class="btn btn-primary my-2">See my projects</a>
+            </p>
+            <hr>
+            <p><img  src="https://github-readme-stats.vercel.app/api/top-langs?username=SUVENDUC789&show_icons=true&locale=en&layout=compact" alt="SUVENDUC789" /></p>
+            <hr>
+            <p><img  src="https://github-readme-stats.vercel.app/api?username=SUVENDUC789&show_icons=true&locale=en" alt="SUVENDUC789" /></p>
+            <hr>
+
+        </div>    
+    </section>    
+  
+    <script>
+      const TypeWriter = function(txtElement, words, wait = 3000) {
+          this.txtElement = txtElement;
+          this.words = words;
+          this.txt = '';
+          this.wordIndex = 0;
+          this.wait = parseInt(wait, 5);
+          this.type();
+          this.isDeleting = false;
+      
+      }    
+      
+      // Type Method 
+      TypeWriter.prototype.type = function() {
+      
+          const current = this.wordIndex % this.words.length;
+          const fullTxt = this.words[current];
+          // console.log(fullTxt);
+          if (this.isDeleting) {
+              this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {  
+              this.txt = fullTxt.substring(0, this.txt.length + 1);
+      
+          }    
+          this.txtElement.innerHTML = `<span class="text-type">${this.txt}|</span>`;
+      
+          let typeSpeed = 300;
+      
+          if (this.isDeleting) {
+              typeSpeed /= 2;
+          }    
+      
+          if (!this.isDeleting && this.txt === fullTxt) {
+              typeSpeed = this.wait;
+              this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === '') {  
+              this.isDeleting = false;
+              this.wordIndex++;
+              typeSpeed = 500;
+          }    
+          setTimeout(() => this.type(), typeSpeed);
+      }    
+      
+      // Init App 
+      document.addEventListener('DOMContentLoaded', init);
+      
+      // Init App 
+      function init() {
+          const txtElement = document.querySelector('.text-type');
+          const words = JSON.parse(txtElement.getAttribute('data-words'));
+          const wait = txtElement.getAttribute('data-wait');
+          // Init TypeWriter
+          new TypeWriter(txtElement, words, wait);
+      
+      }    
+    </script>  
+
+
+
+
+{% endblock  %}
