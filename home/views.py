@@ -13,6 +13,7 @@ p = {
 
 def index(request):
     return render(request, 'index.html', p)
+    
 def error(request):
     return render(request, 'error.html', p)
 
