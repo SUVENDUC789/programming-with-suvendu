@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block container %}
 
-{% if request.method == "POST" %}
+
+{% if messages %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{name}}</strong> phone number is {{pass}} email is {{check}}
+    {% for message in messages %}
+    <strong>{{ message }}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
   </div>
-{% endif %} 
+{% endif %}
 
 <div class="container">
     <div class="text-center my-3"><h2>Contact us</h2></div>
@@ -15,17 +18,20 @@
         {% csrf_token %}
         <div class="mb-3">
             <label for="exampleInputName" class="form-label">Name</label>
-            <input type="text" name="num1" class="form-control" id="exampleInputName" required>
+            <input type="text" name="name" class="form-control" id="exampleInputName" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputphonenumber"  class="form-label">Phone number</label>
-            <input type="text" name="num2" class="form-control" id="exampleInputphonenumber" required>
+            <input type="text" name="phone" class="form-control" id="exampleInputphonenumber" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" name="num3" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-            <div id="emailHelp" class="form-text">We'll ever share your email with anyone else.</div>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
         </div>
+        <div class="mb-3">
+            <label for="floatingTextarea" class="form-label">Tell me about what you want to contact me for...</label>
+            <textarea class="form-control" placeholder="Leave a comment here" name="msg" id="floatingTextarea" style="height: 120px;"  required></textarea>
+          </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
