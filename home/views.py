@@ -14,7 +14,7 @@ p = {
 def index(request):
     return render(request, 'index.html', p)
     
-def error(request):
+def error_404(request,exception):
     return render(request, 'error.html', p)
 
 
